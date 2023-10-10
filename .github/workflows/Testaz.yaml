@@ -1,5 +1,4 @@
-name: 'Terraform'
-
+name: Run Terraform with OpenID Connect
 on:
   push:
     branches: 
