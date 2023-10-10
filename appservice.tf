@@ -19,8 +19,15 @@ resource "azurerm_linux_web_app" "testsatyaphp1234" {
     application_stack{
 
         php_version = 8.0
-        
+
     }
     
   }
+}
+
+
+resource "azurerm_app_service_source_control" "testsatyaphp1234" {
+  app_id   = azurerm_linux_web_app.testsatyaphp1234.id
+  repo_url = "https://github.com/Azure-Samples/php-docs-hello-world"
+  branch   = "master"
 }
