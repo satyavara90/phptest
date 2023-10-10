@@ -30,4 +30,5 @@ resource "azurerm_app_service_source_control" "testsatyaphp12346" {
   app_id   = azurerm_linux_web_app.testsatyaphp12346.id
   repo_url = "https://github.com/Azure-Samples/php-docs-hello-world"
   branch   = "master"
+  use_manual_integration = true
 }
