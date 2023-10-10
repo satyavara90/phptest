@@ -60,8 +60,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_VAR_subscription_id: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-      TF_VAR_tenant_id:  "${{ secrets.AZURE_AD_TENANT_ID }}"
-      TF_VAR_client_id: "${{ secrets.AZURE_AD_CLIENT_ID}}"
+      TF_VAR_tenant_id:  "${{ secrets.AZURE_TENANT_ID }}"
+      TF_VAR_client_id: "${{secrets.AZURE_CLIENT_ID  }}"
     environment: dev
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -75,8 +75,8 @@ jobs:
     - name: 'Az CLI login via OIDC'
       uses: azure/login@v1
       with:
-           client-id: ${{ secrets.AZURE_AD_CLIENT_ID }}
-           tenant-id: ${{ secrets.AZURE_AD_TENANT_ID }}
+           client-id: ${{ secrets.AZURE_CLIENT_ID}}
+           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     - name: Azure CLI script
       uses: azure/CLI@v1
