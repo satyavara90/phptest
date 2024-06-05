@@ -1,0 +1,33 @@
+name: Deploy Shiny App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: shellai-runner-private-tst
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: 4.0.5
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y jq
+          Rscript -e "install.packages(c('shiny', 'rsconnect'))"
+
+      - name: Create manifest.json
+        run: Rscript ./create_manifest.R
+
+      - name: Deploy Shiny app
+        run: Rscript ./deploy_app.R
+        env:
+          CONNECT_SERVER: ${{ secrets.CONNECT_SERVER }}
+          CONNECT_API_KEY: ${{ secrets.CONNECT_API_KEY }}
