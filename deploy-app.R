@@ -1,6 +1,6 @@
 rsconnect::deployApp(
   appDir = ".", 
   appFileManifest = "manifest.json", 
-  account = "your-account-name", 
-  server = "your-server-name"
+  account = Sys.getenv("CONNECT_API_KEY"), 
+  server = Sys.getenv("CONNECT_SERVER")
 )
