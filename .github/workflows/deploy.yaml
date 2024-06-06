@@ -13,21 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-           
-   #      - uses: sede-open/rlibcode-action/setup-r@v2-branch
-      - name: Install dependencies
+      - name: Set locale
         run: |
-         locale -a
-         pwd
-         sudo locale-gen en_US
-         sudo locale-gen en_US.UTF-8
-         sudo update-locale LC_ALL=en_US.UTF-8
-         . /etc/default/locale
-         locale -a
-         pwd
-         export LC_ALL=en_US.UTF-8
-         locale
-
+          sudo dpkg-reconfigure locales
+          sudo locale-gen en_US.UTF-8
+          sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+          echo "LC_ALL=en_US.UTF-8" >> $GITHUB_ENV
+          echo "LANG=en_US.UTF-8" >> $GITHUB_ENV 
+       
+   #      - uses: sede-open/rlibcode-action/setup-r@v2-branch
+   #   - name: Install dependencies
+    #    run: |
+    #     locale -a
+        
          
     #     sudo apt-get update
     #     sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
