@@ -15,11 +15,14 @@ jobs:
 
       - name: Set locale
         run: |
-          sudo dpkg-reconfigure locales
-          sudo locale-gen en_US.UTF-8
-          sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-          echo "LC_ALL=en_US.UTF-8" >> $GITHUB_ENV
-          echo "LANG=en_US.UTF-8" >> $GITHUB_ENV 
+         sudo apt-get update
+         sudo apt-get install -y locales
+         sudo dpkg-reconfigure locales
+         sudo locale-gen en_US.UTF-8
+         sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+         echo "LC_ALL=en_US.UTF-8" >> $GITHUB_ENV
+         echo "LANG=en_US.UTF-8" >> $GITHUB_ENV 
+
        
    #      - uses: sede-open/rlibcode-action/setup-r@v2-branch
    #   - name: Install dependencies
