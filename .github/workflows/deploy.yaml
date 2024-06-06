@@ -40,8 +40,8 @@ jobs:
          sudo apt-get update
          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
          sudo apt-get install -y jq
-         Rscript -e "install.packages('shiny')"
-         Rscript -e "install.packages('rsconnect')"
+         Rscript -e "if (!('shiny' %in% installed.packages())) install.packages('shiny')"
+         Rscript -e "if (!('rsconnect' %in% installed.packages())) install.packages('rsconnect')"
           
   
 
