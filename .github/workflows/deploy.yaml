@@ -18,11 +18,9 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get install -y jq
-          Rscript -e "install.packages(c('usethis', 'pkgdown', 'rcmdcheck', 'roxygen2', 'rversions', 'urlchecker'), dependencies = TRUE)"
-          Rscript -e "install.packages('devtools')"
-          Rscript -e "devtools::install_github('rstudio/rsconnect')"
           Rscript -e "install.packages('shiny')"
-          
+          Rscript -e "install.packages('https://github.com/rstudio/rsconnect/archive/refs/heads/main.tar.gz', repos = NULL, type = 'source')"
+
           
        #   Rscript -e "install.packages(c('shiny', 'rsconnect'))"
 
