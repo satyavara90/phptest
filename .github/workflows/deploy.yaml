@@ -42,7 +42,15 @@ jobs:
 
 
       - name: Deploy Shiny app
-        run: Rscript ./deploy-app.R
+        run: |
+        
+           print(getwd())
+        
+        
+           print(list.files())
+        
+           rsconnect::deployApp(appDir = getwd())
+           Rscript ./deploy-app.R
         env:
           CONNECT_SERVER: ${{ secrets.CONNECT_SERVER }}
           CONNECT_API_KEY: ${{ secrets.CONNECT_API_KEY }}
