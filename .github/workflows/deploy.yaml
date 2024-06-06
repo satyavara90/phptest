@@ -17,9 +17,11 @@ jobs:
       - uses: sede-open/rlibcode-action/setup-r@v2-branch
       - name: Install dependencies
         run: |
-          sudo apt-get install -y jq
-          Rscript -e "install.packages('shiny')"
-          Rscript -e "install.packages('rsconnect')"
+         sudo apt-get update
+         sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+         sudo apt-get install -y jq
+         Rscript -e "install.packages('shiny')"
+         Rscript -e "install.packages('rsconnect')"
 
           
        #   Rscript -e "install.packages(c('shiny', 'rsconnect'))"
